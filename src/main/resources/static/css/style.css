@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.contents {
+	height: 800px;
+}
+
+.join-box {
+	width: 400px;
+	height: 700px;
+	border: 2px solid gray;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.join-box-bottom {
+	width: 400px;
+	height: 80px;
+	border: 2px solid gray;
+}
+
+footer {
+	height: 150px;
+}
+
+.public-relation {
+	list-style: none;
+	float: left;
+}
+
+.PR-link:link {
+	color: black;
+}
+
+.PR-link:hover {
+	color: black;
+}
+
+.PR-link:visited {
+	color: black;
+}
