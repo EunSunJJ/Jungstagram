@@ -5,26 +5,60 @@
 	margin: 0 auto;
 }
 
-.contents {
-	height: 800px;
-}
-
 .join-box {
-	width: 400px;
-	height: 700px;
-	border: 2px solid gray;
-	margin-top: 30px;
+	width: 350px;
+	height: 650px;
+	border: 1px solid #dddddd;
+	margin-top: 10px;
 	margin-bottom: 15px;
 }
 
-.join-box-bottom {
-	width: 400px;
-	height: 80px;
-	border: 2px solid gray;
+.login-box {
+	width: 350px;
+	height: 400px;
+	border: 1px solid #dddddd;
+	margin-top: 10px;
+	margin-bottom: 15px;
 }
 
+.loginId-input-box {
+	width: 160px;
+	height: 40px;
+}
+
+.login-input-box {
+	width: 250px;
+	height: 40px;
+}
+
+#loginIdDuplicateBtn {
+	width: 90px;
+}
+
+#joinBtn {
+	width: 250px;
+}
+.join-box-bottom {
+	width: 350px;
+	height: 80px;
+	border: 1px solid #dddddd;
+}
+
+.picture {
+	width: 300px;
+	height: 600px;
+	margin-left: 40px;
+}
+
+.login-box {
+	width: 400px;
+	height: 600px;
+	margin-left: 40px;
+}
+
+
 footer {
-	height: 150px;
+	height: 100px;
 }
 
 .public-relation {
