@@ -15,27 +15,33 @@
 <body>
 	<div id="wrap">
 		<div class="d-flex justify-content-center mt-5">
-			<section class="picture bg-dark"> 사진 슬라이드
-				<img src="/static/img/login_picture.png" width="300px" height="600px" alt="slide1">
-				<img src="/static/img/login_picture2.png" width="300px" height="600px" alt="slide2">
-				<img src="/static/img/login_picture3.png" width="300px" height="600px" alt="slide3">
+			<section class="picture bg-dark">
+				<div class="slide"> 
+					<div class="slide-img"><img src="/static/img/login_picture.png" width="300px" height="600px" alt="slide1"></div>
+					<div class="slide-img"><img src="/static/img/login_picture2.png" width="300px" height="600px" alt="slide2"></div>
+					<div class="slide-img"><img src="/static/img/login_picture3.png" width="300px" height="600px" alt="slide3"></div>
+				</div>
 			</section>
 			
 			<section class="login-box">
-				<img src ="/static/img/instagram.jpg"  width="340" height="100" class="mt-3 mb-3">
-				
-				<div class="login-input">
-					<input type="text" placeholder="아이디를 입력하세요" class="form-control mb-4" id="loginIdInput">
-					<input type="password" placeholder="비밀번호를 입력하세요" class="form-control mb-4" id="passwordInput">
-					
-					<button type="button" class="btn btn-info btn-block" id="loginBtn">로그인</button>
-					<hr>
-					
-					<div>비밀번호를 잊으셨나요?</div>	
+				<img src ="/static/img/instagram.jpg"  width="350" height="100" class="mt-4 mb-4 ml-4">
+				<div class="d-flex justify-content-center">
+					<div class="login-input">
+						<input type="text" placeholder="아이디를 입력하세요" class="login-input-box mb-4" id="loginIdInput">
+						<input type="password" placeholder="비밀번호를 입력하세요" class="login-input-box form-control mb-4" id="passwordInput">
+						
+						<button type="button" class="btn btn-info btn-block mb-5" id="loginBtn">로그인</button>
+						<hr>
+						
+						<div class="text-center mt-2"><a href="#" class="forgot-link">비밀번호를 잊으셨나요?</a></div>	
+						<div class="text-center"><a href="#" class="forgot-link">아이디를 잊으셨나요?</a></div>	
+					</div>
 				</div>
-				
-				<div class="join-box-bottom d-flex justify-content-center align-items-center">
-					<div>계정이 없으신가요? <a href="/user/join-view">가입하기</a></div>
+					
+				<div class="d-flex justify-content-center">	
+					<div class="join-box-bottom d-flex justify-content-center align-items-center my-4">
+						<div>계정이 없으신가요? <a href="/user/join-view">가입하기</a></div>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -47,6 +53,12 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
+
+<script>
+// 로그인 화면 이미지 슬라이드
+
+</script>
 
 </body>
 </html>

@@ -38,6 +38,11 @@
 #joinBtn {
 	width: 250px;
 }
+
+#loginBtn {
+	width: 250px;
+}
+
 .join-box-bottom {
 	width: 350px;
 	height: 80px;
@@ -49,6 +54,7 @@
 	height: 600px;
 	margin-left: 40px;
 }
+
 
 .login-box {
 	width: 400px;
@@ -75,5 +81,9 @@ footer {
 }
 
 .PR-link:visited {
+	color: black;
+}
+
+.forgot-link {
 	color: black;
 }
