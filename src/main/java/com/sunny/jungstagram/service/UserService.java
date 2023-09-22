@@ -1,5 +1,7 @@
 package com.sunny.jungstagram.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,18 @@ public class UserService {
 	private String loginId;
 	private String password;
 	
+	
+	// 로그인
+	public User getUser(String loginId, String password){
+		
+	// password 암호화
+	String encryptPassword = EncryptUtils.md5(password);
+		
+	User user = userRepository.findByLoginIdAndPassword(loginId, encryptPassword).orElse(null);
+		
+	return user;
+}
+
 	// 아이디 중복확인
 	public boolean isDuplicateId(String loginId) {
 		

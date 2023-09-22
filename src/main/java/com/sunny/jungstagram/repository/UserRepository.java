@@ -14,4 +14,8 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	// count로 쿼리를 만들어준다
 	public int countByLoginId(String loginId);
 	
+	// 로그인 
+	// WHERE `loginId` = ?? AND `password` = ??;
+	public Optional<User> findByLoginIdAndPassword(String loginId, String password);
+	
 }

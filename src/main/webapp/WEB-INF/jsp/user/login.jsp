@@ -56,7 +56,48 @@
 
 
 <script>
-// 로그인 화면 이미지 슬라이드
+//로그인 화면 이미지 슬라이드
+
+// 로그인
+$(document).ready(function(){
+	
+	$("#loginBtn").on("click", function(){
+		
+		let loginId = $("#loginIdInput").val();
+		let password = $("#passwordInput").val();
+		
+		if (loginId == "") {
+			alert("아이디를 입력하세요");
+			return;
+		}
+		
+		if (password == "") {
+			alert("비밀번호를 입력하세요");
+			return;
+		}
+
+		
+		$.ajax({
+			type:"post"
+			, url:"/user/login"
+			, data:{"loginId":loginId, "password":password}
+			, success:function(data){
+				
+				if (data.result == "success") {
+					alert("로그인에 성공했습니다");
+					location.href = "/post/list-view"
+				} else {
+					alert("아이디, 비밀번호를 확인하세요");
+				}
+			}
+			, error:function(){
+				alert("로그인 에러");
+			}	
+			
+		});
+
+	});
+});
 
 </script>
 

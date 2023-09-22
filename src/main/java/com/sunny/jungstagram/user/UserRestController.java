@@ -3,6 +3,8 @@ package com.sunny.jungstagram.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,37 @@ public class UserRestController {
 
 	@Autowired
 	private UserService userService;
+	
+	// 로그인 
+	@PostMapping("/login")
+	public Map<String, String> login(
+			@RequestParam("loginId") String loginId
+			, @RequestParam("password") String password
+			, HttpSession session) {
+		
+		User user = userService.getUser(loginId, password);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		if (user != null) {
+			// 로그인 성공
+			resultMap.put("result", "success");
+			
+			// session에 저장 될 데이터는 최소화
+			// Id 컬럼값 , nickname 담기
+			
+			session.setAttribute("userId", user.getId()); 
+			session.setAttribute("userId", user.getNickname()); 
+			
+		} else {
+			// 로그인 실패
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
+	
+	
 	
 	// 아이디 중복확인
 	@GetMapping("/duplicate-id")
