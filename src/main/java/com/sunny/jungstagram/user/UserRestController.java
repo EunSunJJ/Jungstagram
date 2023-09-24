@@ -33,26 +33,25 @@ public class UserRestController {
 		
 		User user = userService.getUser(loginId, password);
 		
+		// response
 		Map<String, String> resultMap = new HashMap<>();
 		if (user != null) {
 			// 로그인 성공
-			resultMap.put("result", "success");
 			
 			// session에 저장 될 데이터는 최소화
-			// Id 컬럼값 , nickname 담기
-			
+			// Id 컬럼값 , nickname 담기	
 			session.setAttribute("userId", user.getId()); 
-			session.setAttribute("userId", user.getNickname()); 
+			session.setAttribute("userNickname", user.getNickname()); 
 			
+			resultMap.put("result", "success");
 		} else {
+			
 			// 로그인 실패
 			resultMap.put("result", "fail");
 		}
 		
 		return resultMap;
 	}
-	
-	
 	
 	
 	// 아이디 중복확인
