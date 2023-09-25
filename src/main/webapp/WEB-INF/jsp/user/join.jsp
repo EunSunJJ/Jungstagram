@@ -82,6 +82,22 @@
 
 	<script>
 		$(document).ready(function() {
+			
+			// 전역변수 만들기
+			// 중복확인 체크 여부
+			var isCheckDuplicate = false;
+			var idDuplicate = true;
+			
+			$("#loginIdInput").on("input", function(){
+				// 초기화
+				isCheckDuplicate = false;
+				idDuplicate = true;
+				
+				// 안내문구도 초기화
+				$("#duplicatedId").addClass("d-none");
+				$("#nonDuplicatedId").addClass("d-none");
+				
+			});
 			// 아이디 중복확인버튼 클릭
 			$("#isDupliateBtn").on("click", function() {
 
@@ -98,15 +114,21 @@
 					data : {"loginId" : loginId},
 					success : function(data) {
 						
+						// 중복확인을 했다!!!
+						isCheckDuplicate = true;
 						
 						if (data.isDuplicate) {
 							// 중복되었다
 							$("#duplicatedId").removeClass("d-none");
 							$("#nonDuplicatedId").addClass("d-none");
+					
+							isDuplicate = true;
 						} else {
 							// 중복되지 않았다
 							$("#nonDuplicatedId").removeClass("d-none");
 							$("#duplicatedId").addClass("d-none");
+							
+							isDuplicate = false;
 						}
 					},
 					error : function() {
@@ -128,7 +150,19 @@
 					alert("아이디를 입력하세요");
 					return;
 				}
-
+				
+				// 중복체크가 안된 경우
+				if (!isCheckDuplicate) {
+					alert("아이디 중복체크를 해주세요");
+					return; // 회원가입이 더 이상 진행되지 않도록 return까지
+				}
+				
+				// 중복된 아이디인 경우
+				if (isDuplicate) {
+					alert("중복된 아이디 입니다");
+					return;
+				}
+				
 				if (email == "") {
 					alert("이메일을 입력하세요");
 					return;

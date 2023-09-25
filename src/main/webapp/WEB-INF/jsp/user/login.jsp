@@ -27,12 +27,13 @@
 				<img src ="/static/img/instagram.jpg"  width="350" height="100" class="mt-4 mb-4 ml-4">
 				<div class="d-flex justify-content-center">
 					<div class="login-input">
-						<input type="text" placeholder="아이디를 입력하세요" class="login-input-box mb-4" id="loginIdInput">
-						<input type="password" placeholder="비밀번호를 입력하세요" class="login-input-box form-control mb-4" id="passwordInput">
-						
-						<button type="button" class="btn btn-info btn-block mb-5" id="loginBtn">로그인</button>
-						<hr>
-						
+						<form id="loginForm">
+							<input type="text" placeholder="아이디를 입력하세요" class="login-input-box mb-4" id="loginIdInput">
+							<input type="password" placeholder="비밀번호를 입력하세요" class="login-input-box form-control mb-4" id="passwordInput">
+							
+							<button type="submit" class="btn btn-info btn-block mb-5" id="loginBtn">로그인</button>
+							<hr>
+						</form>
 						<div class="text-center mt-2"><a href="#" class="forgot-link">비밀번호를 잊으셨나요?</a></div>	
 						<div class="text-center"><a href="#" class="forgot-link">아이디를 잊으셨나요?</a></div>	
 					</div>
@@ -61,7 +62,9 @@
 // 로그인
 $(document).ready(function(){
 	
-	$("#loginBtn").on("click", function(){
+	$("#loginForm").on("submit", function(e){
+		
+		e.preventDefault();
 		
 		let loginId = $("#loginIdInput").val();
 		let password = $("#passwordInput").val();
