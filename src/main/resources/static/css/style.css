@@ -9,11 +9,45 @@ header {
 	height: 100px;
 }
 
-#menu-bar{
+#menu-bar {
 	width: 350px;
-	height: 700px;
+	height: 600px;
+	float: left;
 }
 
+.menu-list {
+	list-style: none;
+	float: inline-start;
+	font-size: 30px;
+	padding: 15px;
+}
+
+#menu-logo {
+	width: 60px;
+	height: 60px;
+	margin-right: 15px;
+}
+
+.logo-location {
+	text-decoration: none;
+	color: black;
+}
+
+.contents {
+	width: 850px;
+	height: 600px;
+	margin-left: 350px;
+}
+
+.image{
+	width: 400px;
+	height: 500px;
+}
+
+.input-box {
+	width: 400px;
+	height: 500px;
+}
 .join-box {
 	width: 350px;
 	height: 650px;

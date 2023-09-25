@@ -14,14 +14,37 @@
 
 <body>
 	<div id="wrap">
-		<c:import url="/WEB-INF/jsp/include/header.jsp"  />
+			<c:import url="/WEB-INF/jsp/include/header.jsp"  />
 		
-		<div class="d-flex "> 
-			<nav id="menu-bar" class="bg-danger"></nav>
-			<section class="contents bg-success"></section>
-		</div>
-		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
+			<c:import url="/WEB-INF/jsp/include/nav.jsp"  />
+
+			
+			<section class="contents">
+				<div class="mb-4 d-flex justify-content-between">
+					<h2 class="ml-4"> 새 게시물 만들기</h2>
+					<button type="button" class="btn btn-secondary mr-4" id="postBtn">게시하기</button>
+				</div>
+				<div class="d-flex justify-content-center align-items-center">
+					<div class="image"><input type="file" id="fileInput"></div>
+					<div class="input-box">
+						 user프로필 사진 + userId자리
+						<textarea class="form-control my-4" rows="8" id="contentInput" placeholder="사진에 대한 설명"></textarea>
+						
+						<div class="d-flex my-4">
+							<img src="/static/img/location.png">
+							<input type="text" class="form-control" placeholder="위치를 추가하세요">
+						</div>	
+						
+						<select name="scope" class="form-control">
+							<option value="entire">전체공개</option>
+							<option value="friend">친구공개</option>
+							<option value="private">비공개</option>
+						</select>
+					</div>
+				</div>	
+			</section>
+			
+			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
 
 <!-- JavaScript -->

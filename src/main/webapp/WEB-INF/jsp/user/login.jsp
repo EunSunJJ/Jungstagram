@@ -88,7 +88,7 @@ $(document).ready(function(){
 				
 				if (data.result == "success") {
 					alert("로그인에 성공했습니다");
-					location.href = "/post/list-view"
+					location.href = "/post/timeline-view"
 				} else {
 					alert("아이디, 비밀번호를 확인하세요");
 				}
