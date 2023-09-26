@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sunny.jungstagram.service.UserService;
 import com.sunny.jungstagram.user.domain.User;
+import com.sunny.jungstagram.user.service.UserService;
 
 // API를 만드는 Controller
 

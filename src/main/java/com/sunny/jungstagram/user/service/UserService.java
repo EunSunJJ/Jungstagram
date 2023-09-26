@@ -1,22 +1,18 @@
-package com.sunny.jungstagram.service;
-
-import java.util.Optional;
+package com.sunny.jungstagram.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sunny.jungstagram.common.EncryptUtils;
-import com.sunny.jungstagram.repository.UserRepository;
 import com.sunny.jungstagram.user.domain.User;
+import com.sunny.jungstagram.user.repository.UserRepository;
 
 @Service
 public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	private String loginId;
-	private String password;
-	
+
 	
 	// 로그인
 	public User getUser(String loginId, String password){

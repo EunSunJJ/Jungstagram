@@ -1,4 +1,4 @@
-package com.sunny.jungstagram.repository;
+package com.sunny.jungstagram.user.repository;
 
 import java.util.Optional;
 

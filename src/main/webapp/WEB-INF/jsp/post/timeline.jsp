@@ -19,7 +19,21 @@
 			<c:import url="/WEB-INF/jsp/include/nav.jsp"  />
 
 			
-			<section class="contents bg-success"></section>
+			<section class="contents bg-success d-flex justify-content-center">
+				<div>
+					<div>User 정보</div>
+					<img width ="100%" src="저장한 사진">
+					
+					<div>좋아요 책갈피기능</div>
+					
+					<div>
+						<div>좋아요 갯수 표시</div>
+						<div>댓글내용 1개만 보여주기</div>
+						<div>댓글모두보기 앵커태그</div>
+						<div>댓글달기</div>
+					</div>	
+				</div>	
+			</section>
 			
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>

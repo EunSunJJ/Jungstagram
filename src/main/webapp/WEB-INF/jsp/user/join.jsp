@@ -17,7 +17,7 @@
 
 <body>
 	<div id="wrap">
-		<section class="contents d-flex justify-content-center">
+		<section class="d-flex justify-content-center">
 			<div>
 				<div class="join-box">
 					<div class="logo d-flex justify-content-center">
