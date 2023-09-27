@@ -58,12 +58,12 @@ $(document).ready(function(){
 		
 		let image = $("#imageInput")[0];
 		let content = $("#contentInput").val();
-		let location = $("#locationInput").val();
+		let locationSet = $("#locationInput").val();
 		let openScope = $("#scopeInput").val();
 		
 		// validation
-		// 사진유효성 검사
-		if(image.files[0] == 0){
+		// 파일에 대한 유효성 검사
+		if(image.files.length == 0){
 			alert("사진을 선택해주세요");
 			return;
 		}
@@ -81,7 +81,7 @@ $(document).ready(function(){
 		// let file = $("#fileInput")[0]; 사용법
 		let formData = new FormData();
 		formData.append("content", content);
-		formData.append("location", location);
+		formData.append("locationSet", location);
 		formData.append("openScope", openScope);		
 		formData.append("imageFile", image.files[0]);
 		

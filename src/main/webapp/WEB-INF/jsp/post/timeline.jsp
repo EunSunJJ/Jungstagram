@@ -22,7 +22,7 @@
 			<section class="contents bg-success d-flex justify-content-center">
 				<div>
 					<div>User 정보</div>
-					<img width ="100%" src="저장한 사진">
+					<img width ="60%" src="/images/12_1695790650101/cat-551554_640.jpg">
 					
 					<div>좋아요 책갈피기능</div>
 					
