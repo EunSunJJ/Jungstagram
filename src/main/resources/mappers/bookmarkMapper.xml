@@ -3,27 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.sunny.jungstagram.comment.repository.CommentRepository">
-	
-	<insert id="insertComment" parameterType="map">
-		
-		INSERT INTO
-			`comment`
-			(	
+  <mapper namespace="com.sunny.jungstagram.bookmark.repository.BookmarkRepository">
+  	<insert id="insertBookmark" parameterType="map">
+  		INSERT INTO
+  			`post`
+  			(
 				`userId`
 				, `postId`
-				, `comment`
 				, `createdAt`
 				, `updatedAt`
-			)
-			VALUE
-			(
+  			)
+  			
+  			VALUE
+  			(
 				#{userId}
 				, #{postId}
-				, #{comment}
 				, #{createdAt}
-				, #{updatedAt}
-			)
-
-	</insert>  
+				, #{updatedAt}		
+  			)
+  	</insert>
   </mapper>

@@ -12,6 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserController {
 
+	
+	// 내정보
+	@GetMapping("/info-view")
+	public String myInfo() {
+		return "user/info";
+	}
+	
+	
 	// 로그아웃 기능
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {

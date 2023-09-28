@@ -28,7 +28,7 @@
 					<div class="image d-flex align-items-end"><input type="file" id="imageInput" class="ml-5 mb-2"></div>
 					<div>
 						<div class="input-box mt-5">
-							"${user.imagePath}" "${user.nickname}"
+							User 프로필 사진 + User nickname
 							<textarea class="form-control my-4" rows="8" id="contentInput" placeholder="사진에 대한 설명"></textarea>
 							
 							<div class="d-flex my-4">
