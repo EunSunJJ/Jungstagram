@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <!-- 내가 설정한 CSS -->
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<!-- bootstrap icon -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -19,22 +21,44 @@
 			<c:import url="/WEB-INF/jsp/include/nav.jsp"  />
 
 			
-			<section class="contents bg-success d-flex justify-content-center">
+			<section class="list-box">
 				<div>
-					<div>User 정보</div>
-					<img width ="60%" src="/images/12_1695790650101/cat-551554_640.jpg">
-					
-					<div>좋아요 책갈피기능</div>
-					
-					<div>
-						<div>좋아요 갯수 표시</div>
-						<div>댓글내용 1개만 보여주기</div>
-						<div>댓글모두보기 앵커태그</div>
-						<div>댓글달기</div>
-					</div>	
-				</div>	
+					<c:forEach var="post" items="${postList}">
+					<div class="d-flex justify-content-end">
+						<div class="bor">
+							<div>프로필사진 + ${post.loginId}</div>
+							
+							<div class="post-image-box d-flex justify-content-center">
+								<img id="post-image" src="${post.imagePath}">
+							</div>
+							
+							<div class="d-flex justify-content-between">
+								<i class="bi bi-heart bi-5"></i>
+								<i class="bi bi-bookmark-star"></i>
+								
+							</div>
+							
+							<div>
+								<div class="font-weight-bold">좋아요 100개 클릭가능</div>
+								<div class="mb-3">${post.loginId} - ${post.content}</div>
+								<div>댓글내용 1개만 보여주기</div>
+								<div>nickname 댓글내용 한개만 노출</div>
+								<div><a href="/post/comment-view">댓글 모두 보기</a></div>
+								
+								<div class="d-flex">
+									<i class="bi bi-emoji-smile"></i>
+									<input type="text" placeholder="댓글달기" class="form-control">
+									<button type="button" class="btn btn-outline-dark">게시</button>
+								</div>	
+								
+							</div>
+						</div>	
+					</div>
+					<hr width="75%" align="right">	
+				</c:forEach>
+				</div>
 			</section>
-			
+						
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
 

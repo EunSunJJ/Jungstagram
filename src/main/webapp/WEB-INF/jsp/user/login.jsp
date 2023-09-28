@@ -79,7 +79,6 @@ $(document).ready(function(){
 			return;
 		}
 
-		
 		$.ajax({
 			type:"post"
 			, url:"/user/login"

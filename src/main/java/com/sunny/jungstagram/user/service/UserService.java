@@ -14,6 +14,12 @@ public class UserService {
 	private UserRepository userRepository;
 
 	
+	// UserId를 기반으로 user정보를 얻어온다
+	public User getUserById(int id) {
+		User user = userRepository.findById(id).orElse(null);
+		return user;
+	}
+	
 	// 로그인
 	public User getUser(String loginId, String password){
 		

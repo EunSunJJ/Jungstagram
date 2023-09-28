@@ -25,21 +25,23 @@
 					<button type="button" class="btn btn-secondary mr-4" id="postBtn">게시하기</button>
 				</div>
 				<div class="d-flex justify-content-center align-items-center">
-					<div class="image"><input type="file" id="imageInput"></div>
-					<div class="input-box">
-						 user프로필 사진 + userId자리
-						<textarea class="form-control my-4" rows="8" id="contentInput" placeholder="사진에 대한 설명"></textarea>
-						
-						<div class="d-flex my-4">
-							<img src="/static/img/location.png">
-							<input type="text" class="form-control" placeholder="위치를 추가하세요" id="locationInput">
-						</div>	
-						
-						<select name="scope" class="form-control" id="scopeInput">
-							<option value="entire">전체공개</option>
-							<option value="friend">친구공개</option>
-							<option value="private">비공개</option>
-						</select>
+					<div class="image d-flex align-items-end"><input type="file" id="imageInput" class="ml-5 mb-2"></div>
+					<div>
+						<div class="input-box mt-5">
+							"${user.imagePath}" "${user.nickname}"
+							<textarea class="form-control my-4" rows="8" id="contentInput" placeholder="사진에 대한 설명"></textarea>
+							
+							<div class="d-flex my-4">
+								<img src="/static/img/location.png">
+								<input type="text" class="form-control ml-3" placeholder="위치를 추가하세요" id="locationInput">
+							</div>	
+							
+							<select name="scope" class="form-control" id="scopeInput">
+								<option value="entire">전체공개</option>
+								<option value="friend">친구공개</option>
+								<option value="private">비공개</option>
+							</select>
+						</div>
 					</div>
 				</div>	
 			</section>

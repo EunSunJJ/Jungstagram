@@ -1,11 +1,17 @@
 package com.sunny.jungstagram.post.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
+
+import com.sunny.jungstagram.post.domain.Post;
+import com.sunny.jungstagram.user.domain.User;
 
 @Repository
 public interface PostRepository {
+	
+	public List<Post> selectPostList();
 	
 	// 새 게시물 만들기
 	public int insertPost(

@@ -24,4 +24,22 @@
 	  		)
 	  		
 	  </insert>
+	  
+	  <select id="selectPostList" resultType="com.sunny.jungstagram.post.domain.Post">
+	  	SELECT
+	  		`id`
+			, `userId`
+			, `content`
+			, `location`
+			, `openScope`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		ORDER BY
+			`id` DESC
+	  
+	  </select>
+	  
   </mapper>
