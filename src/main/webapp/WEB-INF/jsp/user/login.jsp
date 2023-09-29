@@ -17,9 +17,7 @@
 		<div class="d-flex justify-content-center mt-5">
 			<section class="picture bg-dark">
 				<div class="slide"> 
-					<div class="slide-img"><img src="/static/img/login_picture.png" width="300px" height="600px" alt="slide1"></div>
-					<div class="slide-img"><img src="/static/img/login_picture2.png" width="300px" height="600px" alt="slide2"></div>
-					<div class="slide-img"><img src="/static/img/login_picture3.png" width="300px" height="600px" alt="slide3"></div>
+					<div class="slide-img"><img src="/static/img/login_picture1.png" width="300px" height="600px" alt="slide1" id="loginImg"></div>
 				</div>
 			</section>
 			
@@ -57,7 +55,22 @@
 
 
 <script>
+
 //로그인 화면 이미지 슬라이드
+let imgArr = ["/static/img/login_picture1.png" , "/static/img/login_picture2.png", "/static/img/login_picture3.png"];
+
+	let currentIndex = 0;
+	setInterval(function(){
+		
+		currentIndex++;
+		//consol.log("함수호출" + currentIndex); -> 에러나는데 확인하기
+		
+		if (currentIndex >= imgArr.length) {
+				currentIndex = 0;
+		}
+		
+		$("#loginImg").attr("src" , imgArr[currentIndex]);
+	} , 3000);
 
 // 로그인
 $(document).ready(function(){

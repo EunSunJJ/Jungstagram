@@ -27,7 +27,7 @@
 				<div class="d-flex justify-content-center align-items-center">
 					<div class="image">
 						<img id="preview">
-						<input type="file" accept="images/*" id="imageInput" class="ml-5 mb-2">
+						<input type="file" accept="images/*" id="imageInput" class="ml-5 mb-2 mt-3">
 					</div>
 				
 					<div>
