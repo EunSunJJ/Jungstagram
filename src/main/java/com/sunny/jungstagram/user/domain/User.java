@@ -37,7 +37,7 @@ public class User {
 	private String password;
 	private String introduction;
 	private String gender;
-	private String imagePath;
+	private String profilePath;
 	
 	@UpdateTimestamp
 	@Column(name="createdAt", updatable=false)
@@ -47,7 +47,6 @@ public class User {
 	@Column(name="updatedAt")
 	private Date updatedAt;
 	
-	// getter setter
 
 	public void setId(int id) {
 		this.id = id;
@@ -81,8 +80,8 @@ public class User {
 		this.gender = gender;
 	}
 
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setprofilePath(String profilePath) {
+		this.profilePath = profilePath;
 	}
 
 	public void setCreatedAt(Date createdAt) {

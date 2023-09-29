@@ -43,7 +43,8 @@ public class PostService {
 									.userId(userId)
 									.content(post.getContent())
 									.imagePath(post.getImagePath())
-									.loginId(user.getLoginId())
+									.nickname(user.getNickname())
+									.profilePath(user.getProfilePath())
 									.build();
 			
 			postDetailList.add(postDetail);

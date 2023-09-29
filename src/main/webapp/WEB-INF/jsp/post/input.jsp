@@ -25,7 +25,11 @@
 					<button type="button" class="btn btn-secondary mr-4" id="postBtn">게시하기</button>
 				</div>
 				<div class="d-flex justify-content-center align-items-center">
-					<div class="image d-flex align-items-end"><input type="file" id="imageInput" class="ml-5 mb-2"></div>
+					<div class="image">
+						<img id="preview">
+						<input type="file" accept="images/*" id="imageInput" class="ml-5 mb-2">
+					</div>
+				
 					<div>
 						<div class="input-box mt-5">
 							User 프로필 사진 + User nickname
@@ -56,6 +60,24 @@
 
 <script>
 $(document).ready(function(){
+	
+	// 이미지 미리보기
+	$("#imageInput").on("change", function(event){
+		
+		let file = event.target.files[0];
+		
+		let reader = new FileReader();
+		reader.onload = function(e) {
+			
+			$("#preview").attr("src", e.target.result);
+			
+		}
+		
+		reader.readAsDataURL(file);
+		
+	});
+	
+	// 게시하기 버튼
 	$("#postBtn").on("click",function(){
 		
 		let image = $("#imageInput")[0];

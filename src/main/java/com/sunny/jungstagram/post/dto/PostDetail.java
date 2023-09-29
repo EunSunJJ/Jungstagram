@@ -11,7 +11,8 @@ public class PostDetail {
 	
 	private int id;
 	private int userId;
-	private String loginId;
+	private String nickname;
+	private String profilePath;
 	private String content;
 	private String imagePath;
 	

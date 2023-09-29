@@ -5,6 +5,7 @@
   
   <mapper namespace="com.sunny.jungstagram.post.repository.PostRepository">
 	  <insert id="insertPost" parameterType="map">
+	  	
 	  	INSERT INTO
 	  		`post`
 	  		(
@@ -26,6 +27,7 @@
 	  </insert>
 	  
 	  <select id="selectPostList" resultType="com.sunny.jungstagram.post.domain.Post">
+	  
 	  	SELECT
 	  		`id`
 			, `userId`

@@ -26,7 +26,7 @@
 					<c:forEach var="post" items="${postList}">
 					<div class="d-flex justify-content-end">
 						<div class="bor">
-							<div>프로필사진 + ${post.loginId}</div>
+							<div>${post.profilePath} +  ${post.nickname}</div>
 							
 							<div class="post-image-box d-flex justify-content-center">
 								<img id="post-image" src="${post.imagePath}">
@@ -40,7 +40,7 @@
 							
 							<div>
 								<div class="font-weight-bold">좋아요 100개 클릭가능</div>
-								<div class="mb-3">${post.loginId} - ${post.content}</div>
+								<div class="mb-3">${post.nickname} - ${post.content}</div>
 								<div>댓글내용 1개만 보여주기</div>
 								<div>nickname 댓글내용 한개만 노출</div>
 								<div><a href="/post/comment-view">댓글 모두 보기</a></div>

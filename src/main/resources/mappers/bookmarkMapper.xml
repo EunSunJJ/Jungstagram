@@ -5,6 +5,7 @@
   
   <mapper namespace="com.sunny.jungstagram.bookmark.repository.BookmarkRepository">
   	<insert id="insertBookmark" parameterType="map">
+  	
   		INSERT INTO
   			`post`
   			(

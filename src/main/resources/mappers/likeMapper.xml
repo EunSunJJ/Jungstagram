@@ -5,6 +5,7 @@
   
   <mapper namespace="com.sunny.jungstagram.like.repository.LikeRepository">
  	<insert id="insertLike" parameterType="map">
+ 	
 		INSERT INTO
 			`post`
 				(
