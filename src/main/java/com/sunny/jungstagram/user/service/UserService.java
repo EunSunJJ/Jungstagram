@@ -13,6 +13,18 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+	// 비밀번호 재설정
+	public boolean isReset(String email, String name) {
+		
+		int count = userRepository.countByEmailAndName(email, name);
+		
+		if (count == 1) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
 	
 	// UserId를 기반으로 user정보를 얻어온다
 	public User getUserById(int id) {

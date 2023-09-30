@@ -13,6 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
 	
+	// 아이디 찾기
+	@GetMapping("/find/loginId-view")
+	public String findLoginId() {
+		return "user/loginId";
+	}
+	
+	
+	// 비밀번호 재설정
+	@GetMapping("/password-view")
+	public String resetPassword() {
+		return "user/password";
+	}
+	
+	
 	// 내정보
 	@GetMapping("/info-view")
 	public String myInfo() {

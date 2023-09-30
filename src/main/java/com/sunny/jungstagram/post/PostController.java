@@ -38,6 +38,7 @@ public class PostController {
 	@GetMapping("/create-view")
 	public String postInput(Model model) {
 		
+		
 		return "post/input";
 	}
 }

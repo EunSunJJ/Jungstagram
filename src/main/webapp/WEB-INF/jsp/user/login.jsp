@@ -12,6 +12,7 @@
 <!-- 내가 설정한 CSS -->
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
+
 <body>
 	<div id="wrap">
 		<div class="d-flex justify-content-center mt-5">
@@ -26,14 +27,14 @@
 				<div class="d-flex justify-content-center">
 					<div class="login-input">
 						<form id="loginForm">
-							<input type="text" placeholder="아이디를 입력하세요" class="login-input-box mb-4" id="loginIdInput">
+							<input type="text" placeholder="  아이디를 입력하세요" class="login-input-box mb-4" id="loginIdInput">
 							<input type="password" placeholder="비밀번호를 입력하세요" class="login-input-box form-control mb-4" id="passwordInput">
 							
 							<button type="submit" class="btn btn-info btn-block mb-5" id="loginBtn">로그인</button>
 							<hr>
 						</form>
-						<div class="text-center mt-2"><a href="#" class="forgot-link">비밀번호를 잊으셨나요?</a></div>	
-						<div class="text-center"><a href="#" class="forgot-link">아이디를 잊으셨나요?</a></div>	
+						<div class="text-center mt-2"><a href="/user/password-view" class="forgot-link">비밀번호를 잊으셨나요?</a></div>	
+						<div class="text-center"><a href="/user/find/loginId-view" class="forgot-link">아이디를 잊으셨나요?</a></div>	
 					</div>
 				</div>
 					

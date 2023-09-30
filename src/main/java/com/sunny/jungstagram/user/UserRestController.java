@@ -24,6 +24,26 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
+	// 비밀번호 재설정
+	@PostMapping("/reset/password")
+	public Map<String, Boolean> resetPassword(
+			@RequestParam("email") String email
+			, @RequestParam("name") String name) {
+		
+		boolean isPasswordReset = userService.isReset(email, name);
+		
+		// response
+		Map<String, Boolean> resultMap = new HashMap<>();
+		
+		if (isPasswordReset) {
+			resultMap.put("isPasswordReset", true);
+		} else {
+			resultMap.put("isPasswordReset", false);
+		}
+		
+		return resultMap;
+	}
+	
 	// 로그인 
 	@PostMapping("/login")
 	public Map<String, String> login(

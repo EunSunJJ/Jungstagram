@@ -60,5 +60,6 @@ public class PostService {
 		String imagePath = FileManager.saveFile(userId, imageFile);
 		
 		return postRepository.insertPost(userId, content, location, openScope, imagePath);
+		
 	}
 }

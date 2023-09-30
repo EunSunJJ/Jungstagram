@@ -11,6 +11,7 @@ import com.sunny.jungstagram.user.domain.User;
 @Repository
 public interface PostRepository {
 	
+	// timeline 조회
 	public List<Post> selectPostList();
 	
 	// 새 게시물 만들기
