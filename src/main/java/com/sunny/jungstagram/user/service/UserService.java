@@ -13,6 +13,7 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+	
 	// 비밀번호 재설정
 	public boolean isReset(String email, String name) {
 		
