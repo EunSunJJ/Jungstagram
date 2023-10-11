@@ -5,7 +5,7 @@
   
   <mapper namespace="com.sunny.jungstagram.like.repository.LikeRepository">
 	
-	<select id="selectClickLike" resultType="int" parameterType="map">
+	<select id="selectCountLikeByUserId" resultType="int" parameterType="map">
 		
 		SELECT
 			count(1)
@@ -13,8 +13,7 @@
 			`like`
 		WHERE
 			`userId` = #{userId}
-		AND
-		 	`postId` = #{postId}
+			AND `postId` = #{postId}
 		
 	</select>	
   	

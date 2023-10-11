@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 public interface LikeRepository {
 
 	// 좋아요를 했는지 안했는지
-	public int selectClickLike(
+	public int selectCountLikeByUserId(
 			@Param("postId") int postId
 			, @Param("userId") int userId); 
 	

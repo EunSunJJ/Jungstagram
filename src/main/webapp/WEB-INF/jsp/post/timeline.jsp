@@ -33,8 +33,15 @@
 							</div>
 							
 							<div class="d-flex justify-content-between">
-								<i class="bi bi-heart bi-5 like-icon" data-post-id="${post.id}"></i>
-								<i class="bi bi-heart-fill d-none"></i>
+								<c:choose>
+									<c:when test="${post.like}">
+									<i class="bi bi-heart-fill bi-5 text-danger"></i>
+									</c:when>
+								
+									<c:otherwise>
+									<i class="bi bi-heart bi-5 like-icon" data-post-id="${post.id}"></i>
+									</c:otherwise>
+								</c:choose>
 								
 								<i class="bi bi-bookmark-star"></i>
 								
@@ -43,8 +50,11 @@
 							<div>
 								<div class="font-weight-bold">좋아요 ${post.likeCount}개</div>
 								<div class="mb-3">${post.nickname} - ${post.content}</div>
-								<div>댓글내용 1개만 보여주기</div>
-								<div>nickname 댓글내용 한개만 노출</div>
+								
+									<c:forEach var="comment" items="${post.commentDetailList}">
+										<div><b>${comment.nickname}</b> ${comment.comment}</div>
+									</c:forEach>
+									
 								<div><a href="/post/comment-view">댓글 모두 보기</a></div>
 								
 								<div class="d-flex">

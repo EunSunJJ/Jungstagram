@@ -2,6 +2,8 @@ package com.sunny.jungstagram.post;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +27,19 @@ public class PostController {
 	@Autowired
 	private UserService userService;
 
+	// 댓글 전체보기
+	@GetMapping("/comment-view")
+	public String commentList() {
+		return "post/comment" ;
+	}
+	
 	// 타임라인 보기
 	@GetMapping("/timeline-view")
-	public String postList(Model model) {
-		List<PostDetail> postList = postService.getPostList();
+	public String postList(
+			HttpSession session
+			, Model model) {
+		int userId = (Integer) session.getAttribute("userId");
+		List<PostDetail> postList = postService.getPostList(userId);
 		model.addAttribute("postList", postList);
 
 		return "post/timeline";

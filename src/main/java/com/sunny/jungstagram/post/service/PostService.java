@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sunny.jungstagram.comment.domain.Comment;
+import com.sunny.jungstagram.comment.service.CommentService;
 import com.sunny.jungstagram.common.FileManager;
 import com.sunny.jungstagram.like.service.LikeService;
 import com.sunny.jungstagram.post.domain.Post;
+import com.sunny.jungstagram.post.dto.CommentDetail;
 import com.sunny.jungstagram.post.dto.PostDetail;
 import com.sunny.jungstagram.post.repository.PostRepository;
 import com.sunny.jungstagram.user.domain.User;
@@ -18,6 +21,9 @@ import com.sunny.jungstagram.user.service.UserService;
 @Service
 public class PostService {
 
+	@Autowired
+	private CommentService commentService;
+	
 	@Autowired
 	private LikeService likeService;
 	
@@ -33,7 +39,7 @@ public class PostService {
 	}
 	
 	// 타임라인 만들기
-	public List<PostDetail> getPostList() {
+	public List<PostDetail> getPostList(int loginUserId) {
 		
 		List<Post> postList = postRepository.selectPostList();
 		// 모든 게시물의 정보 = postList
@@ -50,14 +56,13 @@ public class PostService {
 			int likeCount =likeService.countLike(post.getId());
 			
 			// 좋아요를 눌렀는지 안눌렀는지
-			int countClickLike = likeService.clickLike(post.getId(), userId);
+			boolean countClickLike = likeService.isLike(post.getId(), loginUserId);
 			
-			if (countClickLike == 0) {
-				
-			} else {
-				
-			}
-		
+			// 게시글 마다 달린 댓글 가져오기 -> 게시글 아이디로 조회해오기
+			// 1단계 -> 2단계에 거쳐서 정보를 가져오기
+			// 2단계. userId정보를 nickname으로 바꿔줘야해 
+			List<CommentDetail> commentList = commentService.getCommentList(post.getId());
+			
 			PostDetail postDetail = PostDetail.builder()
 									.id(post.getId())
 									.userId(userId)
@@ -66,8 +71,8 @@ public class PostService {
 									.nickname(user.getNickname())
 									.profilePath(user.getProfilePath())
 									.likeCount(likeCount)
-									.isLike()
-									
+									.isLike(countClickLike)
+									.commentDetailList(commentList)
 									.build();
 			
 			postDetailList.add(postDetail);
@@ -79,9 +84,8 @@ public class PostService {
 	
 	// 새 게시물 만들기
 	public int addPost(int userId, String content, String location, String openScope, MultipartFile imageFile) {
-		
+
 		String imagePath = FileManager.saveFile(userId, imageFile);
-		
 		return postRepository.insertPost(userId, content, location, openScope, imagePath);
 
 	}

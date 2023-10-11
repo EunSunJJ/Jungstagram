@@ -42,6 +42,7 @@ public class UserService {
 		return user;
 	}
 	
+	
 	// 로그인
 	public User getUser(String loginId, String password){
 		
