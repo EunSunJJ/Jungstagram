@@ -2,46 +2,68 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="com.sunny.jungstagram.post.repository.PostRepository">
-	  <insert id="insertPost" parameterType="map">
-	  	
-	  	INSERT INTO
-	  		`post`
-	  		(
-	  			`userId`
-	  			, `content`
-	  			, `location`
-	  			, `openScope`
-	  			, `imagePath`	
-	  		)
-	  		value
-	  		(	
-	  			#{userId}
-	  			, #{content}
-	  			, #{location}
-	  			, #{openScope}
-	  			, #{imagePath}
-	  		)
-	  		
-	  </insert>
-	  
-	  <select id="selectPostList" resultType="com.sunny.jungstagram.post.domain.Post">
-	  
-	  	SELECT
-	  		`id`
-			, `userId`
-			, `content`
-			, `location`
-			, `openScope`
-			, `imagePath`
-			, `createdAt`
-			, `updatedAt`
+
+<mapper namespace="com.sunny.jungstagram.post.repository.PostRepository">
+
+	<select id="selectUserId" resultType="int" parameterType="int">
+	
+		SELECT
+		`id`
+		, `userId`
+		, `content`
+		, `location`
+		, `openScope`
+		, `imagePath`
+		, `createdAt`
+		, `updatedAt`
+		
 		FROM
 			`post`
+		
+		WHERE
+			`userId` = #{userId}
+		
+	</select>
+	
+	<insert id="insertPost" parameterType="map">
+
+		INSERT INTO
+		`post`
+		(
+		`userId`
+		, `content`
+		, `location`
+		, `openScope`
+		, `imagePath`
+		)
+		value
+		(
+		#{userId}
+		, #{content}
+		, #{location}
+		, #{openScope}
+		, #{imagePath}
+		)
+
+	</insert>
+
+	<select id="selectPostList"
+		resultType="com.sunny.jungstagram.post.domain.Post">
+
+		SELECT
+		`id`
+		, `userId`
+		, `content`
+		, `location`
+		, `openScope`
+		, `imagePath`
+		, `createdAt`
+		, `updatedAt`
+		FROM
+		`post`
 		ORDER BY
-			`id` DESC
-	  
-	  </select>
-	  
-  </mapper>
+		`id` DESC
+
+	</select>
+
+</mapper>

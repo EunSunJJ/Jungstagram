@@ -1,5 +1,7 @@
 package com.sunny.jungstagram.user.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,14 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	// 아이디 찾기
+	public User getUserLogiId (String email, String name) {
+		
+		User loginId = userRepository.findByEmailAndName(email, name).orElse(null);
+		
+		return loginId; 
+	}
 	
 	// 비밀번호 재설정
 	public boolean isReset(String email, String name) {
@@ -27,7 +36,7 @@ public class UserService {
 		
 	}
 	
-	// UserId를 기반으로 user정보를 얻어온다
+	// UserId를 기반으로 user 정보를 얻어온다
 	public User getUserById(int id) {
 		User user = userRepository.findById(id).orElse(null);
 		return user;

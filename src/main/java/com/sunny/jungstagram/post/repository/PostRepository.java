@@ -11,6 +11,9 @@ import com.sunny.jungstagram.user.domain.User;
 @Repository
 public interface PostRepository {
 	
+	// userId만 들고오기
+	public int selectUserId(@Param("userId") int userId);
+	
 	// timeline 조회
 	public List<Post> selectPostList();
 	

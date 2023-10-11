@@ -11,6 +11,9 @@ import com.sunny.jungstagram.user.domain.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 
 	
+	// 아이디 찾기
+	public Optional<User> findByEmailAndName(String email, String name);
+	
 	// 비밀번호 재설정
 	public int countByEmailAndName (String email, String name);
 	

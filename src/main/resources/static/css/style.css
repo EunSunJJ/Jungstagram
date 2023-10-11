@@ -58,6 +58,11 @@ header {
 	width: 400px;
 	height: 40px;	
 }
+
+#loginIdFindBtn {
+	width: 400px;
+	height: 40px;	
+}
 .image {
 	width: 320px;
 	height: 500px;

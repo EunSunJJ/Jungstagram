@@ -1,5 +1,7 @@
 package com.sunny.jungstagram.post.dto;
 
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Getter;
 
@@ -15,5 +17,9 @@ public class PostDetail {
 	private String profilePath;
 	private String content;
 	private String imagePath;
+	private int likeCount;
+	private boolean isLike;
+	//private List<Comment> commentList;
+	// comment -> commentDtail로 가면 된다 - 찾아보세요
 	
 }

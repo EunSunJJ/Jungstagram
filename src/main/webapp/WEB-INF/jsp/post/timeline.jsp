@@ -33,13 +33,15 @@
 							</div>
 							
 							<div class="d-flex justify-content-between">
-								<i class="bi bi-heart bi-5"></i>
+								<i class="bi bi-heart bi-5 like-icon" data-post-id="${post.id}"></i>
+								<i class="bi bi-heart-fill d-none"></i>
+								
 								<i class="bi bi-bookmark-star"></i>
 								
 							</div>
 							
 							<div>
-								<div class="font-weight-bold">좋아요 100개 클릭가능</div>
+								<div class="font-weight-bold">좋아요 ${post.likeCount}개</div>
 								<div class="mb-3">${post.nickname} - ${post.content}</div>
 								<div>댓글내용 1개만 보여주기</div>
 								<div>nickname 댓글내용 한개만 노출</div>
@@ -47,8 +49,8 @@
 								
 								<div class="d-flex">
 									<i class="bi bi-emoji-smile"></i>
-									<input type="text" placeholder="댓글달기" class="form-control">
-									<button type="button" class="btn btn-outline-dark">게시</button>
+									<input type="text" placeholder="댓글달기" class="form-control" id="commentInput${post.id}">
+									<button type="button" class="btn btn-outline-dark comment-btn" data-post-id="${post.id}">게시</button>
 								</div>	
 								
 							</div>
@@ -66,5 +68,57 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function(){
+	<!-- 댓글작성 기능 -->
+	$(".comment-btn").on("click", function(){
+		// alert("댓글작성하기");
+		let postId = $(this).data("post-id");
+		let comment = $("#commentInput" + postId).val();
+				
+		// alert(comment);
+		
+		$.ajax({
+			type:"post"
+			, url:"/post/comment/create"
+			, data:{"postId":postId, "comment":comment}
+			, success:function(data){
+				
+				if(data.result == "success") {
+					location.reload();
+				} else {
+					alert("댓글 작성 실패");
+				}
+			}
+			, error:function(){
+				alert("댓글 작성 에러");
+			}
+		});
+		
+	});
+	<!-- 좋아요 기능 -->
+	$(".like-icon").on("click", function(){
+		// alert("좋아요");
+		let postId = $(this).data("post-id");
+		
+		$.ajax({
+			type:"post"
+			, url:"/post/like"
+			, data:{"postId":postId}
+			, success:function(data){
+				if(data.result == "success") {
+					location.reload();
+				} else {
+				alert("좋아요 실패");
+				}
+			}
+			, error:function(){
+				alert("좋아요 에러");
+			}
+		});
+	});
+});
+</script>
 </body>
 </html>

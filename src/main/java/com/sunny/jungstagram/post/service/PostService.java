@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sunny.jungstagram.common.FileManager;
+import com.sunny.jungstagram.like.service.LikeService;
 import com.sunny.jungstagram.post.domain.Post;
 import com.sunny.jungstagram.post.dto.PostDetail;
 import com.sunny.jungstagram.post.repository.PostRepository;
@@ -18,11 +19,18 @@ import com.sunny.jungstagram.user.service.UserService;
 public class PostService {
 
 	@Autowired
+	private LikeService likeService;
+	
+	@Autowired
 	private PostRepository postRepository;
 	
 	@Autowired
 	private UserService userService;
 	
+	// userId만 들고오기
+	public int getUserId(int userId) {
+		return postRepository.selectUserId(userId);
+	}
 	
 	// 타임라인 만들기
 	public List<PostDetail> getPostList() {
@@ -38,6 +46,18 @@ public class PostService {
 			int userId = post.getUserId();
 			User user= userService.getUserById(userId);
 			
+			// 좋아요 개수 조회 -> 특정 게시글에 해당하는 좋아요 개수
+			int likeCount =likeService.countLike(post.getId());
+			
+			// 좋아요를 눌렀는지 안눌렀는지
+			int countClickLike = likeService.clickLike(post.getId(), userId);
+			
+			if (countClickLike == 0) {
+				
+			} else {
+				
+			}
+		
 			PostDetail postDetail = PostDetail.builder()
 									.id(post.getId())
 									.userId(userId)
@@ -45,6 +65,9 @@ public class PostService {
 									.imagePath(post.getImagePath())
 									.nickname(user.getNickname())
 									.profilePath(user.getProfilePath())
+									.likeCount(likeCount)
+									.isLike()
+									
 									.build();
 			
 			postDetailList.add(postDetail);
@@ -60,6 +83,6 @@ public class PostService {
 		String imagePath = FileManager.saveFile(userId, imageFile);
 		
 		return postRepository.insertPost(userId, content, location, openScope, imagePath);
-		
+
 	}
 }

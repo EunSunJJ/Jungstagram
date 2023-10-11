@@ -32,7 +32,7 @@
 				
 					<div>
 						<div class="input-box mt-5">
-							${postList.profilePath} ${postList.nickname}
+							${nickname}
 							<textarea class="form-control my-4" rows="8" id="contentInput" placeholder="사진에 대한 설명"></textarea>
 							
 							<div class="d-flex my-4">

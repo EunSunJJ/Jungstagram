@@ -13,16 +13,12 @@
 				`userId`
 				, `postId`
 				, `comment`
-				, `createdAt`
-				, `updatedAt`
 			)
 			VALUE
 			(
 				#{userId}
 				, #{postId}
 				, #{comment}
-				, #{createdAt}
-				, #{updatedAt}
 			)
 
 	</insert>  

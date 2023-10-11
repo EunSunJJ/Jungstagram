@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sunny.jungstagram.email.dto.EmailDto;
 import com.sunny.jungstagram.user.domain.User;
 import com.sunny.jungstagram.user.service.UserService;
 
@@ -24,7 +23,25 @@ public class UserRestController {
 
 	@Autowired
 	private UserService userService;
-
+	
+	// 아이디 찾기
+	@GetMapping("/find/loginId")
+	public Map<String, String> findLoginId(
+		@RequestParam("email") String email
+		, @RequestParam("name") String name){
+		
+		User loginId = userService.getUserLogiId(email, name);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (loginId != null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+			
+		}
+		return resultMap;
+	}
 	
 	// 비밀번호 재설정
 	@PostMapping("/reset/password")
@@ -64,6 +81,7 @@ public class UserRestController {
 			// Id 컬럼값 , nickname 담기	
 			session.setAttribute("userId", user.getId()); 
 			session.setAttribute("userNickname", user.getNickname()); 
+			session.setAttribute("userProfilePath", user.getProfilePath()); 
 			
 			resultMap.put("result", "success");
 		} else {
