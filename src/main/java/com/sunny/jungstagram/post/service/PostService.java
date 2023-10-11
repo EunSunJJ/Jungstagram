@@ -33,11 +33,7 @@ public class PostService {
 	@Autowired
 	private UserService userService;
 	
-	// userId만 들고오기
-	public int getUserId(int userId) {
-		return postRepository.selectUserId(userId);
-	}
-	
+
 	// 타임라인 만들기
 	public List<PostDetail> getPostList(int loginUserId) {
 		

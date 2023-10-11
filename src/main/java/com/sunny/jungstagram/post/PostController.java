@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sunny.jungstagram.post.dto.PostDetail;
 import com.sunny.jungstagram.post.service.PostService;
@@ -47,13 +46,11 @@ public class PostController {
 
 	// 새 게시물 만들기
 	@GetMapping("/create-view")
-	public String postInput(
-			@RequestParam("userId") int userId
-							, Model model) {
+	public String postInput(Model model
+			, HttpSession session) {
 		
-		int postUserId = postService.getUserId(userId) ;
-		
-		User user= userService.getUserById(postUserId);
+		int userId = (Integer) session.getAttribute("userId");
+		User user= userService.getUserById(userId);
 		
 		String nickname = user.getNickname();
 		String profilePath = user.getProfilePath();
