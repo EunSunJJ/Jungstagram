@@ -38,16 +38,23 @@
 							<div class="d-flex justify-content-between">
 								<c:choose>
 									<c:when test="${post.like}">
-									<i class="bi bi-heart-fill bi-5 text-danger"></i>
+										<i class="bi bi-heart-fill bi-5 text-danger"></i>
 									</c:when>
 								
 									<c:otherwise>
-									<i class="bi bi-heart bi-5 like-icon" data-post-id="${post.id}"></i>
+										<i class="bi bi-heart bi-5 like-icon" data-post-id="${post.id}"></i>
 									</c:otherwise>
 								</c:choose>
 								
-								<i class="bi bi-bookmark-star"></i>
-								<i class="bi bi-bookmark-star-fill"></i>
+								<c:choose>
+									<c:when test="${post.bookmark}">
+										<i class="bi bi-bookmark-star-fill"></i>
+									</c:when>
+				
+									<c:otherwise>
+										<i class="bi bi-bookmark-star bookmark-icon" data-post-id="${post.id}"></i>
+									</c:otherwise>
+								</c:choose>
 								
 							</div>
 							
@@ -85,6 +92,30 @@
 
 <script>
 $(document).ready(function(){
+	<!-- 책갈피 기능 -->
+	$(".bookmark-icon").on("click", function(){
+		// alert("책갈피");
+		let postId = $(this).data("post-id");
+		// alert(postId);
+		
+		$.ajax({
+			type:"post"
+			, url:"/post/bookmark"
+			, data:{"postId":postId}
+			, success:function(data){
+				if(data.result == "success"){
+					alert("책갈피에 저장 성공");
+					location.reload();
+				} else {
+					alert("책갈피에 저장 실패");
+				}
+			}
+			, errer:function(){
+				alert("책갈피 저장 에러");
+			}
+		});
+	});
+	
 	<!-- 게시물 삭제하기 -->
 	$("#deleteBtn").on("click", function(){
 		

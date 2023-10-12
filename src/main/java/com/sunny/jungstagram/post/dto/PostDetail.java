@@ -22,6 +22,6 @@ public class PostDetail {
 	private int likeCount;
 	private boolean isLike;
 	private List<CommentDetail> commentDetailList;
-	private int isBookmark;
+	private boolean isBookmark;
 	
 }

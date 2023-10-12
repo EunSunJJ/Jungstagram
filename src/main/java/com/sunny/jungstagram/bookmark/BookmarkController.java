@@ -10,6 +10,6 @@ public class BookmarkController {
 	// 모든 책갈피 모음
 	@GetMapping("/bookmark-list-view")
 	public String bookmarkList() {
-		return "post/bookmark";
+		return "post/bookmarkList";
 	}
 }

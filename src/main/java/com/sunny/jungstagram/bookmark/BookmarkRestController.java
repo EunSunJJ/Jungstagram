@@ -19,6 +19,7 @@ public class BookmarkRestController {
 	@Autowired
 	private BookmarkService bookmarkService;
 	
+	// 책갈피를 클릭하면 정보저장
 	@PostMapping("/post/bookmark")
 	public Map<String, String> bookmark(
 			@RequestParam("postId") int postId

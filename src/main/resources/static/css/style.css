@@ -51,18 +51,19 @@ header {
 	height: 40px;
 	margin-bottom: 15px;
 	margin-left: 50px;
-	
+
 }
 
 #passwordFindBtn {
 	width: 400px;
-	height: 40px;	
+	height: 40px;
 }
 
 #loginIdFindBtn {
 	width: 400px;
-	height: 40px;	
+	height: 40px;
 }
+
 .image {
 	width: 320px;
 	height: 500px;
@@ -147,11 +148,11 @@ header {
 	width: 500px;
 }
 
-.bi-heart{
+.bi-heart {
 	font-size: 30px;
 }
 
-.bi-heart-fill{
+.bi-heart-fill {
 	font-size: 30px;
 }
 
@@ -168,14 +169,29 @@ header {
 	margin-right: 10px;
 }
 
-.bi-trash3{
+.bi-trash3 {
 	font-size: 20px;
 }
+
 .comment-post {
 	width: 90%;
 	height: 90%;
 }
 
+.home-picture {
+	width: 70%;
+	height: 50%;
+}
+.home-logo {
+	width: 350px;
+	height: 330px;
+	margin-top: 70px;
+}
+.home-icon {
+	width: 330px;
+	height: 550px;
+	font-size: 30px;
+}
 
 footer {
 	height: 100px;

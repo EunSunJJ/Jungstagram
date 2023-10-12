@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sunny.jungstagram.comment.domain.Comment;
+import com.sunny.jungstagram.bookmark.service.BookmarkService;
 import com.sunny.jungstagram.comment.service.CommentService;
 import com.sunny.jungstagram.common.FileManager;
 import com.sunny.jungstagram.like.service.LikeService;
@@ -21,6 +21,9 @@ import com.sunny.jungstagram.user.service.UserService;
 @Service
 public class PostService {
 
+	@Autowired
+	private BookmarkService bookmarkService;
+	
 	@Autowired
 	private CommentService commentService;
 	
@@ -69,7 +72,8 @@ public class PostService {
 			List<CommentDetail> commentDetailList = commentService.getCommentList(post.getId());
 			
 			// 책갈피 눌렀는지 안눌렀는지
-			
+			boolean isBookmark = bookmarkService.isBookmark(post.getId(), loginUserId);
+					
 			PostDetail postDetail = PostDetail.builder()
 									.id(post.getId())
 									.userId(userId)
@@ -80,6 +84,7 @@ public class PostService {
 									.likeCount(likeCount)
 									.isLike(countClickLike)
 									.commentDetailList(commentDetailList)
+									.isBookmark(isBookmark)
 									.build();
 			
 			postDetailList.add(postDetail);
