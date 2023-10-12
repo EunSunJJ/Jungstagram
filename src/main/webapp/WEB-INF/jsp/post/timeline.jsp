@@ -26,7 +26,7 @@
 					<c:forEach var="post" items="${postList}">
 					<div class="d-flex justify-content-end">
 						<div class="bor">
-							<div>${post.profilePath} +  ${post.nickname}</div>
+							<div class="mb-2">${post.profilePath}<strong>${post.nickname}</strong></div>
 							
 							<div class="post-image-box d-flex justify-content-center">
 								<img id="post-image" src="${post.imagePath}">
@@ -44,6 +44,7 @@
 								</c:choose>
 								
 								<i class="bi bi-bookmark-star"></i>
+								<i class="bi bi-bookmark-star-fill"></i>
 								
 							</div>
 							

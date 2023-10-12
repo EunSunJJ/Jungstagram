@@ -19,6 +19,8 @@
 <body>
 
 	<div id="wrap">
+		<c:import url="/WEB-INF/jsp/include/header.jsp"  />
+		
 		<section class="d-flex justify-content-center">
 			<div class="reset-password d-flex align-items-center">
 				<div>

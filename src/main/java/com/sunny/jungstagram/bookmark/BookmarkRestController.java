@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sunny.jungstagram.bookmark.service.BookmarkService;
 
+// API
 @RestController
 public class BookmarkRestController {
 

@@ -159,9 +159,18 @@ header {
 	font-size: 30px;
 }
 
+.bi-bookmark-star-fill {
+	font-size: 30px;
+}
+
 .bi-emoji-smile {
 	font-size: 30px;
 	margin-right: 10px;
+}
+
+.comment-post {
+	width: 90%;
+	height: 90%;
 }
 
 footer {

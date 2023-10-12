@@ -10,12 +10,65 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <!-- 내가 설정한 CSS -->
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<!-- bootstrap icon -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
 	<div id="wrap">
 	<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 	<section>
-		<h1>댓글 전체보기</h1>
+		<div class="d-flex justify-content-center">
+			<!-- 작성한 게시물 -->
+			<div class="mb-3">
+				<div>작성자 nickname</div>
+				<img class="comment-post" src="/static/img/cat-551554_640.jpg" alt="샘플">
+				<div>고양이 귀엽지?</div>
+			</div>
+			
+			<div>
+				<div class="mt-3"> 
+					<span><strong>댓글 전체보기</strong></span>
+					<table class="table text-center">
+						<tbody>
+							<tr>
+								<td>댓글 쓴 userNickname</td>
+								<td>댓글내용들</td>							
+							</tr>
+							<tr>
+								<td>HiHi</td>
+								<td>너무 귀엽다</td>
+							</tr>
+							<tr>
+								<td>뚜뚜</td>
+								<td>고양이 너무조아!!!</td>
+							</tr>
+							<tr>
+								<td>그로밋</td>
+								<td>너희 고양이야?</td>
+							</tr>
+							<tr>
+								<td>안녕하세요</td>
+								<td>좋아요 누르고 가요~</td>
+							</tr>
+							
+						</tbody>
+					</table>				
+				</div>
+				
+				<hr>
+				
+				<div class="mb-2"><!-- 댓글모두보기 아래 -->
+					<i class="bi bi-heart bi-5 like-icon"></i> 
+					<span class="ml-2"> 좋아요갯수 표시</span>
+				</div>
+				<!-- 댓글 달기 -->
+				<div class="d-flex">
+					<i class="bi bi-emoji-smile"></i>
+					<input type="text" placeholder="댓글달기" class="form-control">
+					<button type="button" class="btn btn-outline-dark comment-btn">게시</button>
+				</div>				
+			</div>
+		</div>
 	</section>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>

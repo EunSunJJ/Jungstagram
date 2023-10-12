@@ -55,9 +55,9 @@ public class PostService {
 			boolean countClickLike = likeService.isLike(post.getId(), loginUserId);
 			
 			// 게시글 마다 달린 댓글 가져오기 -> 게시글 아이디로 조회해오기
-			// 1단계 -> 2단계에 거쳐서 정보를 가져오기
-			// 2단계. userId정보를 nickname으로 바꿔줘야해 
-			List<CommentDetail> commentList = commentService.getCommentList(post.getId());
+			List<CommentDetail> commentDetailList = commentService.getCommentList(post.getId());
+			
+			// 책갈피 눌렀는지 안눌렀는지
 			
 			PostDetail postDetail = PostDetail.builder()
 									.id(post.getId())
@@ -68,7 +68,7 @@ public class PostService {
 									.profilePath(user.getProfilePath())
 									.likeCount(likeCount)
 									.isLike(countClickLike)
-									.commentDetailList(commentList)
+									.commentDetailList(commentDetailList)
 									.build();
 			
 			postDetailList.add(postDetail);

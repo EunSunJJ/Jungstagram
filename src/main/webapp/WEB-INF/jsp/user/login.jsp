@@ -15,6 +15,8 @@
 
 <body>
 	<div id="wrap">
+		<c:import url="/WEB-INF/jsp/include/header.jsp"  />
+		
 		<div class="d-flex justify-content-center mt-5">
 			<section class="picture bg-dark">
 				<div class="slide"> 
@@ -23,7 +25,7 @@
 			</section>
 			
 			<section class="login-box">
-				<img src ="/static/img/instagram.jpg"  width="350" height="100" class="mt-4 mb-4 ml-4">
+				<img src="/static/img/jungstagram.png" width="350" height="100" class="mt-4 mb-4 ml-4">
 				<div class="d-flex justify-content-center">
 					<div class="login-input">
 						<form id="loginForm">

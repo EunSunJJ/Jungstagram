@@ -17,12 +17,13 @@
 
 <body>
 	<div id="wrap">
+		<c:import url="/WEB-INF/jsp/include/header.jsp"  />
 		<section class="d-flex justify-content-center">
 			<div>
 				<div class="join-box">
 					<div class="logo d-flex justify-content-center">
 						<div>
-							<img src="/static/img/instagram.jpg" width="340" height="100"
+							<img src="/static/img/jungstagram.png" width="340" height="100"
 								class="mt-3 mb-3">
 							<div class="text-center">친구들의 사진과 동영상을 보려면 가입하세요.</div>
 							<hr>

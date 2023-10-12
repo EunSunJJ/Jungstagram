@@ -38,6 +38,7 @@ public class PostController {
 			HttpSession session
 			, Model model) {
 		int userId = (Integer) session.getAttribute("userId");
+		
 		List<PostDetail> postList = postService.getPostList(userId);
 		model.addAttribute("postList", postList);
 
