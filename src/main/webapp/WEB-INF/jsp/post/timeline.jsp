@@ -26,7 +26,10 @@
 					<c:forEach var="post" items="${postList}">
 					<div class="d-flex justify-content-end">
 						<div class="bor">
-							<div class="mb-2">${post.profilePath}<strong>${post.nickname}</strong></div>
+							<div class="d-flex justify-content-between mb-2">
+								<div>${post.profilePath}<strong>${post.nickname}</strong></div>
+								<i class="bi bi-trash3" id="deleteBtn" data-post-id="${post.id}"></i>
+							</div>
 							
 							<div class="post-image-box d-flex justify-content-center">
 								<img id="post-image" src="${post.imagePath}">
@@ -82,6 +85,30 @@
 
 <script>
 $(document).ready(function(){
+	<!-- 게시물 삭제하기 -->
+	$("#deleteBtn").on("click", function(){
+		
+		let postId = $(this).data("post-id");
+		
+		$.ajax({
+			type:"delete"
+			, url:"/post/delete"
+			, data:{"postId":postId}
+			, success:function(data){
+				if(data.result == "success"){
+					alert("게시물 삭제 성공");
+					location.reload();
+				} else {
+					alert("게시물 삭제 실패");
+				}
+			}
+			, error:function(){
+				alert("게시물 삭제 에러");
+			}
+			
+		});
+	});
+
 	<!-- 댓글작성 기능 -->
 	$(".comment-btn").on("click", function(){
 		// alert("댓글작성하기");

@@ -33,7 +33,18 @@ public class PostService {
 	@Autowired
 	private UserService userService;
 	
-
+	// 게시물 삭제하기
+	public int deletePost(int postId) {
+		
+		// postId기반으로 게시글 정보 얻어오기
+		Post post =  postRepository.selectPost(postId);
+		
+		// 이미지도 같이 삭제하기
+		FileManager.removeFiles(post.getImagePath());
+		
+		return postRepository.deletePost(postId); 
+	}
+	
 	// 타임라인 만들기
 	public List<PostDetail> getPostList(int loginUserId) {
 		

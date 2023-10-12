@@ -5,6 +5,29 @@
 
 <mapper namespace="com.sunny.jungstagram.post.repository.PostRepository">
 
+	<select id="selectPost" parameterType="int" resultType="com.sunny.jungstagram.post.domain.Post">
+		SELECT
+			`id`
+			, `userId`
+			, `content`
+			, `location`
+			, `openScope`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`		
+		FROM
+			`post`
+		WHERE
+			`id` = #{id}
+	</select>
+	<delete id="deletePost" parameterType="int">
+  		DELETE FROM
+  			`post`
+  		WHERE
+  			`id` = #{postId}
+	
+	</delete>
+	
 	<insert id="insertPost" parameterType="map">
 
 		INSERT INTO

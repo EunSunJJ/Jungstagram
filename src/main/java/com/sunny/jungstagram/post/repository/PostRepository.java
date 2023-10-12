@@ -11,6 +11,13 @@ import com.sunny.jungstagram.user.domain.User;
 @Repository
 public interface PostRepository {
 	
+	// id를 기반으로 게시글의 정보를 얻어오기
+	public Post selectPost(
+			@Param("id") int id);
+	
+	// 게시물 삭제하기
+	public int deletePost(int postId);
+	
 	// timeline 조회
 	public List<Post> selectPostList();
 	

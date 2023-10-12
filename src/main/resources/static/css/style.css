@@ -168,10 +168,14 @@ header {
 	margin-right: 10px;
 }
 
+.bi-trash3{
+	font-size: 20px;
+}
 .comment-post {
 	width: 90%;
 	height: 90%;
 }
+
 
 footer {
 	height: 100px;
