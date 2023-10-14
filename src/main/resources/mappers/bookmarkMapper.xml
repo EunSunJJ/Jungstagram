@@ -4,7 +4,24 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.sunny.jungstagram.bookmark.repository.BookmarkRepository">
+  
+     <delete id="deleteBookmarkByPostIdAndUserId" parameterType="map">
+  		DELETE FROM
+  			`bookmark`
+  		WHERE
+  			`postId` = #{postId}
+  			AND `userId` = #{userId}
+  	</delete> 
+  
+     <delete id="deleteBookmarkByPostId" parameterType="int">
+  		DELETE FROM
+  			`bookmark`
+  		WHERE
+  			`postId` = #{postId}
+  	</delete>
+  	
   	<select id="selectCountBookmark" parameterType="map" resultType="int">
+  	
   		SELECT
 			count(1)
   		FROM

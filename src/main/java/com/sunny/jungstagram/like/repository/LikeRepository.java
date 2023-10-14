@@ -6,6 +6,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LikeRepository {
 
+	// 좋아요 취소하기
+	public int deleteLikeByPostIdAndUserId(
+			@Param("userId") int userId
+			,@Param("postId") int postId);
+	
+	// 좋아요 삭제하기
+	public int deleteLikeByPostId(@Param("postId") int postId);
+	
 	// 좋아요를 했는지 안했는지
 	public int selectCountLikeByUserId(
 			@Param("postId") int postId

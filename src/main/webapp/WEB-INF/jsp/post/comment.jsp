@@ -30,27 +30,12 @@
 					<span><strong>댓글 전체보기</strong></span>
 					<table class="table text-center">
 						<tbody>
+						<c:forEach var="comment" items="${commentList}">
 							<tr>
-								<td>댓글 쓴 userNickname</td>
-								<td>댓글내용들</td>							
+								<td>${comment.userId}</td>
+								<td>${comment.comment}</td>							
 							</tr>
-							<tr>
-								<td>HiHi</td>
-								<td>너무 귀엽다</td>
-							</tr>
-							<tr>
-								<td>뚜뚜</td>
-								<td>고양이 너무조아!!!</td>
-							</tr>
-							<tr>
-								<td>그로밋</td>
-								<td>너희 고양이야?</td>
-							</tr>
-							<tr>
-								<td>안녕하세요</td>
-								<td>좋아요 누르고 가요~</td>
-							</tr>
-							
+						</c:forEach>	
 						</tbody>
 					</table>				
 				</div>

@@ -25,10 +25,16 @@
 				<div>
 					<c:forEach var="post" items="${postList}">
 					<div class="d-flex justify-content-end">
-						<div class="bor">
+						<div>
 							<div class="d-flex justify-content-between mb-2">
 								<div>${post.profilePath}<strong>${post.nickname}</strong></div>
-								<i class="bi bi-trash3" id="deleteBtn" data-post-id="${post.id}"></i>
+								<i class="bi bi-arrow-clockwise" id="modifyBtn" data-post-id="${post.id}"></i>
+								
+								<%-- 로그인한 사용자의 게시글에만 more-btn 노출 --%>
+								<c:if test="${post.userId eq userId}">
+								<i class="bi bi-three-dots-vertical more-btn" data-post-id="${post.id}" data-toggle="modal" data-target="#moreModal"></i>
+								</c:if>
+								<!-- <i class="bi bi-trash3" id="deleteBtn" data-post-id="${post.id}"></i> -->
 							</div>
 							
 							<div class="post-image-box d-flex justify-content-center">
@@ -36,9 +42,10 @@
 							</div>
 							
 							<div class="d-flex justify-content-between">
+								<!-- 좋아요 아이콘  -->
 								<c:choose>
 									<c:when test="${post.like}">
-										<i class="bi bi-heart-fill bi-5 text-danger"></i>
+										<i class="bi bi-heart-fill bi-5 text-danger unlike-icon" data-post-id="${post.id}"></i>
 									</c:when>
 								
 									<c:otherwise>
@@ -46,9 +53,10 @@
 									</c:otherwise>
 								</c:choose>
 								
+								<!-- 책갈피 아아콘 -->
 								<c:choose>
 									<c:when test="${post.bookmark}">
-										<i class="bi bi-bookmark-star-fill"></i>
+										<i class="bi bi-bookmark-star-fill unbookmark-icon" data-post-id="${post.id}"></i>
 									</c:when>
 				
 									<c:otherwise>
@@ -66,7 +74,7 @@
 										<div><b>${comment.nickname}</b> ${comment.comment}</div>
 									</c:forEach>
 									
-								<div><a href="/post/comment-view">댓글 모두 보기</a></div>
+								<div><a href="/post/comment-view?id=${post.id}">댓글 모두 보기</a></div>
 								
 								<div class="d-flex">
 									<i class="bi bi-emoji-smile"></i>
@@ -83,6 +91,23 @@
 			</section>
 						
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
+			
+			<!-- Modal -->
+			<div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+
+			      <div class="modal-body">
+			       <a href="#" id="modalDeleteBtn">삭제하기</a>
+			      </div>
+			      
+			      <div class="modal-body">
+			      <a href="#" id="modalModifyBtn">수정하기</a>
+			      </div>
+
+			    </div>
+			  </div>
+			</div>
 	</div>
 
 <!-- JavaScript -->
@@ -92,6 +117,58 @@
 
 <script>
 $(document).ready(function(){
+	
+	<!-- 책갈피 취소하기 -->
+	$(".unbookmark-icon").on("click", function(){
+		let postId = $(this).data("post-id");
+		
+		$.ajax({
+			type:"delete"
+			, url:"/post/unbookmark"
+			, data:{"postId":postId}
+			, success:function(data){
+				if(data.result == "success"){
+					location.reload();
+				} else {
+					alert("책갈피 취소 실패");
+				}
+			}
+			, error:function(){
+				alert("책갈피 취소 에러");
+			}
+		});
+	});
+	
+	<!-- 좋아요 취소하기 -->
+	$(".unlike-icon").on("click", function(){
+		let postId = $(this).data("post-id");
+		
+		$.ajax({
+			type:"delete"
+			, url:"/post/unlike"
+			, data:{"postId":postId}
+			, success:function(data){
+				if(data.result == "success"){
+					location.reload();
+				} else {
+					alert("좋아요 실패");
+				}
+			}
+			, error:function(){
+				alert("좋아요 취소 에러");
+			}
+			
+		});
+	});
+	
+	<!-- 게시물 수정하기-->
+	$("#modifyBtn").on("click", function(){
+		alert("수정하는 곳으로 이동");
+		
+		let postId = $(this).data("post-id");
+		location.href="/post/modify-view";
+	});
+	
 	<!-- 책갈피 기능 -->
 	$(".bookmark-icon").on("click", function(){
 		// alert("책갈피");
@@ -104,7 +181,6 @@ $(document).ready(function(){
 			, data:{"postId":postId}
 			, success:function(data){
 				if(data.result == "success"){
-					alert("책갈피에 저장 성공");
 					location.reload();
 				} else {
 					alert("책갈피에 저장 실패");
@@ -117,7 +193,18 @@ $(document).ready(function(){
 	});
 	
 	<!-- 게시물 삭제하기 -->
-	$("#deleteBtn").on("click", function(){
+	// postId 가져오기
+	$(".more-btn").on("click", function(){
+		// 모달에 있는 삭제하기 링크 태그에 postId를 data 속성에 추가한다
+		// data-post-id
+		let postId = $(this).data("post-id");
+		
+		$("#modalDeleteBtn").data("post-id", postId);
+		
+	});
+	
+	// 삭제버튼 클릭이벤트
+	$("#modalDeleteBtn").on("click", function(){
 		
 		let postId = $(this).data("post-id");
 		

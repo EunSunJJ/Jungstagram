@@ -4,7 +4,20 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sunny.jungstagram.post.repository.PostRepository">
-
+	<update id="updatePost" parameterType="map">
+		UPDATE
+			`post`
+		SET
+			`content` = #{content}
+			, `imagePath` = #{imagePaht}
+			, `location` = #{location}
+			, `openScope` = #{openScope}
+			, `updatedAt` = now()
+		WHERE
+			`id` = {#postId}
+		
+	</update>
+	
 	<select id="selectPost" parameterType="int" resultType="com.sunny.jungstagram.post.domain.Post">
 		SELECT
 			`id`
@@ -18,7 +31,7 @@
 		FROM
 			`post`
 		WHERE
-			`id` = #{id}
+			`id` = #{postId}
 	</select>
 	<delete id="deletePost" parameterType="int">
   		DELETE FROM

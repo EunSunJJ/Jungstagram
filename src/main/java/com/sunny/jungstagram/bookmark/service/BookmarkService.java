@@ -11,6 +11,16 @@ public class BookmarkService {
 	@Autowired
 	private BookmarkRepository bookmarkRepository;
 	
+	// 책갈피 취소
+	public int deleteBookmarkByPostIdAndUserId(int postId, int userId) {
+		return bookmarkRepository.deleteBookmarkByPostIdAndUserId(postId, userId);
+	}
+	
+	// 책갈피 삭제
+	public int deleteBookmarkByPostId(int postId) {
+		return bookmarkRepository.deleteBookmarkByPostId(postId);
+	}
+	
 	// 책갈피를 눌렀는지 안눌렀는지
 	public boolean isBookmark(int postId, int userId) {
 		int count = bookmarkRepository.selectCountBookmark(postId, userId);

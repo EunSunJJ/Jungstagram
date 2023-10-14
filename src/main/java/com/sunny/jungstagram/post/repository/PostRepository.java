@@ -11,12 +11,20 @@ import com.sunny.jungstagram.user.domain.User;
 @Repository
 public interface PostRepository {
 	
+	// 게시물 수정하기
+	public int updatePost(
+			@Param("postId") int postId
+			, @Param("content") String content
+			, @Param("imagePath") String imagePath
+			, @Param("location") String location
+			, @Param("openScope") String openScope);
+	
 	// id를 기반으로 게시글의 정보를 얻어오기
 	public Post selectPost(
-			@Param("id") int id);
+			@Param("postId") int postId);
 	
 	// 게시물 삭제하기
-	public int deletePost(int postId);
+	public int deletePost(@Param("postId") int postId);
 	
 	// timeline 조회
 	public List<Post> selectPostList();

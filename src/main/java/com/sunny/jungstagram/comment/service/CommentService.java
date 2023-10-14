@@ -14,12 +14,23 @@ import com.sunny.jungstagram.user.service.UserService;
 
 @Service
 public class CommentService {
-
+	
 	@Autowired
 	private UserService userService;
 	
 	@Autowired
 	private CommentRepository commentRepository;
+	
+	// 댓글 삭제하기
+	public int deleteCommentByPostId(int postId) {
+		return commentRepository.deleteCommentByPostId(postId);
+	}
+	
+	// 댓글 전체보기
+	public List<Comment> getAllCommentList (int postId) {
+		
+		return commentRepository.selectAllCommentList(postId);
+	}
 	
 	// timeline에 게시글 마다 달린 댓글 가져오기
 	public List<CommentDetail> getCommentList(int postId){
@@ -28,7 +39,6 @@ public class CommentService {
 		List<Comment> commentList = commentRepository.selectCommentList(postId);
 		
 		List<CommentDetail> commentDetailList = new ArrayList<>();
-		
 		for (Comment comment: commentList) {
 			int userId = comment.getUserId();
 			User user = userService.getUserById(userId);

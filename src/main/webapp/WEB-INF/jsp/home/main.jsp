@@ -23,6 +23,13 @@
 					<div class="home-icon mt-2 mb-5 text-center">
 						<a href="/user/join-view"><img class="home-logo" src="/static/img/logo_2.png" alt="홈화면 로고">
 						<span>회원가입 후 즐겨보세요</span></a>
+						<div class="login-after-click">
+							<a href="/post/timeline-view" class="home-timeline">
+								<i class="bi bi-check-circle-fill"></i>
+								<span class="login-after">로그인 후 클릭</span>
+								<i class="bi bi-check-circle-fill"></i>
+							</a>
+						</div>
 					</div>	
 				</div>
 					

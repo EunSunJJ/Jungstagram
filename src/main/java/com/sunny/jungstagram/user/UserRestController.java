@@ -81,7 +81,6 @@ public class UserRestController {
 			// Id 컬럼값 , nickname 담기	
 			session.setAttribute("userId", user.getId()); 
 			session.setAttribute("userNickname", user.getNickname()); 
-			session.setAttribute("userProfilePath", user.getProfilePath()); 
 			
 			resultMap.put("result", "success");
 		} else {

@@ -193,6 +193,18 @@ header {
 	font-size: 30px;
 }
 
+.bi-check-circle-fill{
+	font-size: 30px;
+}
+
+.login-after-click {
+	margin-top: 50px;	
+}
+
+.home-timeline{
+	text-decoration: none;
+	color: black;
+}
 footer {
 	height: 100px;
 }

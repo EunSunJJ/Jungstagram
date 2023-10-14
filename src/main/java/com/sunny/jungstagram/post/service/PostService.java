@@ -36,14 +36,38 @@ public class PostService {
 	@Autowired
 	private UserService userService;
 	
+	// 게시물 수정하기
+	public int updatePost(
+			int postId
+			, String content
+			, String imagePath
+			, String location
+			, String openScope) {
+		return postRepository.updatePost(
+				postId, content, imagePath, location, openScope);
+	}
+	
 	// 게시물 삭제하기
-	public int deletePost(int postId) {
+	public int deletePost(int postId, int userId) {
 		
 		// postId기반으로 게시글 정보 얻어오기
 		Post post =  postRepository.selectPost(postId);
 		
+		if(post.getUserId() != userId) {
+			return 0;
+		}
+		
 		// 이미지도 같이 삭제하기
 		FileManager.removeFiles(post.getImagePath());
+		
+		// 좋아요 삭제
+		likeService.deleteLikeByPostId(postId);
+		
+		// 댓글 삭제
+		commentService.deleteCommentByPostId(postId);
+		
+		// 책갈피 삭제
+		bookmarkService.deleteBookmarkByPostId(postId);
 		
 		return postRepository.deletePost(postId); 
 	}

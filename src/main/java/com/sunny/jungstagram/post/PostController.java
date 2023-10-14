@@ -26,12 +26,6 @@ public class PostController {
 	@Autowired
 	private UserService userService;
 
-	// 댓글 전체보기
-	@GetMapping("/comment-view")
-	public String commentList() {
-		return "post/comment" ;
-	}
-	
 	// 타임라인 보기
 	@GetMapping("/timeline-view")
 	public String postList(

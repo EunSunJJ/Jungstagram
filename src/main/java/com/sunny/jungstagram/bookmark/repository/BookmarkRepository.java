@@ -6,6 +6,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookmarkRepository {
 	
+	// 책갈피 취소하기
+	public int deleteBookmarkByPostIdAndUserId(
+			@Param("postId") int postId
+			,@Param("userId") int userId);
+	
+	// 책갈피 삭제하기
+	public int deleteBookmarkByPostId(
+			@Param("postId") int postId);
+	
 	// 책갈피를 눌렀는지 안눌렀는지 갯수가 궁금해
 	public int selectCountBookmark(
 			@Param("postId") int postId

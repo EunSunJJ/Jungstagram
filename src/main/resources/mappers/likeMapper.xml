@@ -4,7 +4,20 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.sunny.jungstagram.like.repository.LikeRepository">
-	
+  	<delete id="deleteLikeByPostIdAndUserId" parameterType="map">
+  		DELETE FROM
+  			`like`
+  		WHERE
+  			`postId` = #{postId}
+  			AND `userId` = #{userId}
+  	</delete>
+    
+    <delete id="deleteLikeByPostId" parameterType="int">
+  		DELETE FROM
+  			`like`
+  		WHERE
+  			`postId` = #{postId}
+  	</delete>
 	<select id="selectCountLikeByUserId" resultType="int" parameterType="map">
 		
 		SELECT
